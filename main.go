@@ -29,8 +29,8 @@ func (a *AddonHelper) Search(term string) []gocapi.AddonInfo {
 
 func main() {
 
-	js := mewn.String("./frontend/dist/my-app/main.js")
-	css := mewn.String("./frontend/dist/my-app/styles.css")
+	js := mewn.String("./frontend/dist/avalon/main.js")
+	css := mewn.String("./frontend/dist/avalon/styles.css")
 
 	app := wails.CreateApp(&wails.AppConfig{
 		Width:  1024,
