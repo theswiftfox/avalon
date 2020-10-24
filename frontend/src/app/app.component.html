@@ -1,0 +1,42 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="w3-container w3-teal">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  <div class="w3-bar">
+    <button class="w3-bar-item w3-button" (click)="openTab('getAddons')">Get Addons</button>
+    <button class="w3-bar-item w3-button" (click)="openTab('installed')">Installed</button>
+  </div>
+</div>
+<div class="w3-container mainTabs" id="getAddons">
+  <div class="w3-bar">
+    <button *ngIf="featuredResponse != null && featuredResponse.Featured.length > 0" class="w3-bar-item w3-button"
+      (click)="openGetAddonsTab('featuredAddons')">Highlighted</button>
+    <button *ngIf="featuredResponse != null && featuredResponse.Popular.length > 0" class="w3-bar-item w3-button"
+      (click)="openGetAddonsTab('popularAddons')">Popular</button>
+    <button *ngIf="featuredResponse != null && featuredResponse.RecentlyUpdated.length > 0"
+      class="w3-bar-item w3-button" (click)="openGetAddonsTab('updatedAddons')">Recently Updated</button>
+    <button class="w3-bar-item w3-button" (click)="openGetAddonsTab('search')">Search</button>
+
+  </div>
+  <div class="overviewTabs" id="featuredAddons"
+    *ngIf="featuredResponse != null && featuredResponse.Featured.length > 0">
+    <app-addon-list [addonList]="featuredResponse.Featured"></app-addon-list>
+  </div>
+  <div class="overviewTabs" id="popularAddons" *ngIf="featuredResponse != null && featuredResponse.Popular.length > 0">
+    <app-addon-list [addonList]="featuredResponse.Popular"></app-addon-list>
+  </div>
+  <div class="overviewTabs" id="updatedAddons"
+    *ngIf="featuredResponse != null && featuredResponse.RecentlyUpdated.length > 0">
+    <app-addon-list [addonList]="featuredResponse.RecentlyUpdated"></app-addon-list>
+  </div>
+  <div class="w3-container overviewTabs" id="search">
+    <app-addon-search></app-addon-search>
+  </div>
+
+</div>
+<div class="w3-container mainTabs" id="installed">
+
+</div>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,10 @@
+<form class="w3-container">
+  <input #searchTerm (keyup)="onKey(searchTerm.value)" class="w3-input" type="text" placeholder="Search for ...">
+</form>
+
+<div *ngIf="searchResult != null">
+  <app-addon-list *ngIf="searchResult.length > 0" [addonList]="searchResult"></app-addon-list>
+  <div *ngIf="searchResult.length == 0">
+    No addons found :(
+  </div>
+</div>
